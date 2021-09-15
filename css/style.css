@@ -134,17 +134,13 @@ button {
   box-sizing: border-box;
 }
 
-.tip-5:focus,
-.tip-10:focus,
-.tip-15:focus,
-.tip-25:focus,
-.tip-50:focus {
+.clicked {
   background-color: hsl(172, 67%, 45%);
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 10px;
-  color: hsl(189, 41%, 97%);
+  color: hsl(180, 38%, 22%);
   border-radius: 10px;
   width: 90px;
   height: 50px;
@@ -155,9 +151,25 @@ button {
 
 .tip-custom {
   background-color: hsl(180, 19%, 92%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
+  margin-top: 10px;
+  color: hsl(183, 100%, 21%);
+  border-radius: 10px;
+  width: 90px;
+  height: 50px;
+  font-size: 15px;
+  font-weight: 700;
+  box-sizing: border-box;
+  border-style: none;
+}
+
+.tip-custom:focus-within {
+  outline: none;
+}
+
+.tip-custom-active {
+  background-color: hsl(180, 19%, 92%);
+  text-align: center;
   margin-top: 10px;
   color: hsl(183, 100%, 21%);
   border-radius: 10px;
@@ -190,7 +202,12 @@ button {
 .tip-amount-subtitle,
 .total-title,
 .total-subtitle {
-  width: 150px;
+  width: 100px;
+}
+
+.total-title,
+.total-subtitle {
+  width: 80px;
 }
 
 .tip-amount-calculate,
@@ -202,7 +219,7 @@ button {
   box-sizing: border-box;
   text-align: right;
   font-size: 30px;
-  width: 50%;
+  width: 70%;
   color: hsl(172, 67%, 45%);
 }
 
@@ -228,7 +245,9 @@ button {
   font-size: 15px;
   font-weight: 700;
   border-radius: 5px;
+  cursor: unset;
 }
+
 .reset-active {
   background: none;
   background-color: hsl(172, 67%, 45%);

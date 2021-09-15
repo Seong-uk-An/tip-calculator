@@ -34,25 +34,20 @@
                 src="./images/icon-dollar.svg"
                 alt="dollar"
               />
-              <input
-                class="bill-input"
-                type="text"
-                placeholder="0"
-                maxlength="6"
-              />
+              <input class="bill-input" type="text" value="100" maxlength="6" />
             </div>
           </div>
           <div class="tip">
             <div class="tip-text head-text">Select Tip %</div>
             <div class="tips-up">
-              <button class="tip-5">5%</button>
+              <button class="tip-5 clicked">5%</button>
               <button class="tip-10">10%</button>
               <button class="tip-15">15%</button>
             </div>
             <div class="tips-below">
               <button class="tip-25">25%</button>
               <button class="tip-50">50%</button>
-              <button class="tip-custom">Custom</button>
+              <input class="tip-custom" value="Custom" maxlength="2" />
             </div>
           </div>
           <div class="people-number">
@@ -66,7 +61,7 @@
               <input
                 class="people-number-input"
                 type="text"
-                placeholder="1"
+                value="1"
                 maxlength="2"
               />
             </div>
@@ -79,14 +74,14 @@
               <div class="tip-amount-title">Tip Amount</div>
               <div class="tip-amount-subtitle">/ person</div>
             </div>
-            <div class="tip-amount-calculate">$0.00</div>
+            <div class="tip-amount-calculate">$5.00</div>
           </div>
           <div class="total">
             <div class="total-text">
               <div class="total-title">Total</div>
               <div class="total-subtitle">/ person</div>
             </div>
-            <div class="total-calculate">$0.00</div>
+            <div class="total-calculate">$105.00</div>
           </div>
           <button class="reset">Reset</button>
         </div>
@@ -99,6 +94,6 @@
         >. Coded by <a href="#">ASU</a>.
       </div>
     </div>
-    <script src="./js/main.js"></script>
+    <script type="module" src="./js/main.js"></script>
   </body>
 </html>

@@ -1,0 +1,55 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Courier New", Courier, monospace;
+  background-color: hsl(185, 41%, 84%);
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-up,
+.title-below {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-up {
+  margin-top: 100px;
+}
+
+.tip-calculator {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: white;
+  margin-top: 100px;
+  padding: 30px;
+  border-radius: 20px;
+  width: 500px;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: hsl(183, 100%, 15%);
+  color: white;
+  padding: 20px;
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}

@@ -27,32 +27,58 @@
       <div class="tip-calculator">
         <div class="left">
           <div class="bill">
-            <div class="bill-text">Bill</div>
-            <input class="bill-input" type="text" placeholder="0" />
+            <div class="bill-text head-text">Bill</div>
+            <div class="bill-submit">
+              <img
+                class="bill-icon"
+                src="./images/icon-dollar.svg"
+                alt="dollar"
+              />
+              <input class="bill-input" type="text" placeholder="0" />
+            </div>
           </div>
           <div class="tip">
-            <div class="tip-text">Select Tip %</div>
-            <div class="tip-5">5%</div>
-            <div class="tip-10">10%</div>
-            <div class="tip-15">15%</div>
-            <div class="tip-25">25%</div>
-            <div class="tip-50">50%</div>
-            <input class="tip-custom" type="text" placeholder="Custom" />
+            <div class="tip-text head-text">Select Tip %</div>
+            <div class="tips-up">
+              <button class="tip-5">5%</button>
+              <button class="tip-10">10%</button>
+              <button class="tip-15">15%</button>
+            </div>
+            <div class="tips-below">
+              <button class="tip-25">25%</button>
+              <button class="tip-50">50%</button>
+              <button class="tip-custom">Custom</button>
+            </div>
           </div>
-          <div class="people-number"></div>
-          <div class="people-number-text">Number of People</div>
+          <div class="people-number">
+            <div class="people-number-text head-text">Number of People</div>
+            <div class="people-number-submit">
+              <img
+                class="people-number-icon"
+                src="./images/icon-person.svg"
+                alt="dollar"
+              />
+              <input class="people-number-input" type="text" placeholder="0" />
+            </div>
+          </div>
         </div>
 
         <div class="right">
           <div class="tip-amount">
-            <div class="tip-amount-title">Tip Amount</div>
-            <div class="tip-amount-subtitle">/ person</div>
+            <div class="tip-amount-text">
+              <div class="tip-amount-title">Tip Amount</div>
+              <div class="tip-amount-subtitle">/ person</div>
+            </div>
+            <div class="tip-amount-calculate">$ 0.00</div>
           </div>
           <div class="total">
-            <div class="total-title">Total</div>
-            <div class="total-subtitle">/ person</div>
+            <div class="total-text">
+              <div class="total-title">Total</div>
+              <div class="total-subtitle">/ person</div>
+            </div>
+            <div class="total-calculate">$ 0.00</div>
           </div>
-          <div class="reset">Reset</div>
+          <button class="reset">Reset</button>
         </div>
       </div>
 

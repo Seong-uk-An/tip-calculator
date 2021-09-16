@@ -180,6 +180,29 @@ button {
   box-sizing: border-box;
 }
 
+.people-number-texts {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.people-number-error {
+  color: red;
+  font-size: 13px;
+}
+
+.people-number-zero {
+  border: 1px solid red;
+}
+
+.people-number-zero:focus-within {
+  border: 1px solid red;
+}
+
+.hidden {
+  display: none;
+}
+
 .right {
   display: flex;
   flex-direction: column;

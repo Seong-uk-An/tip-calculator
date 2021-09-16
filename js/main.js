@@ -2,6 +2,7 @@ const billInput = document.querySelector(".bill-input");
 const tip = document.querySelector(".tip");
 const customBtn = document.querySelector(".tip-custom");
 const peopleNumberInput = document.querySelector(".people-number-input");
+const peopleNumberError = document.querySelector(".people-number-error");
 const tipAmount = document.querySelector(".tip-amount-calculate");
 const total = document.querySelector(".total-calculate");
 const resetBtn = document.querySelector(".reset");
@@ -9,7 +10,9 @@ const resetBtn = document.querySelector(".reset");
 const tipUp = tip.children[1];
 const tipBelow = tip.children[2];
 
-function selectTips() {
+let customBtnActivated = false;
+
+function init() {
   for (let i = 0; i < 3; i++) {
     tipUp.children[i].addEventListener("click", calculate);
     tipUp.children[i].addEventListener("click", activateResetBtn);
@@ -36,11 +39,20 @@ function calculate(target) {
     peopleNumberInput.value == 1
   ) {
     deactivateResetBtn();
+  } else {
+    activateResetBtn();
+  }
+
+  if (peopleNumberInput.value == 0 || peopleNumberInput.value === null) {
+    peopleNumberInput.parentNode.classList.add("people-number-zero");
+    peopleNumberError.classList.remove("hidden");
+  } else {
+    peopleNumberInput.parentNode.classList.remove("people-number-zero");
+    peopleNumberError.classList.add("hidden");
   }
 
   const targetClass = target.target.classList[0];
   const customBtnValue = customBtn.value;
-  console.log(customBtnValue);
 
   if (targetClass !== "bill-input" && targetClass !== "people-number-input") {
     for (let i = 0; i < 3; i++) {
@@ -57,7 +69,7 @@ function calculate(target) {
 
   const clickedEl = document.querySelector(".clicked");
   const data = Number(clickedEl.outerText.slice(-3, -1));
-  const customData = Number(customBtnValue);
+  const customData = Number(customBtnValue.slice(-3, -1));
   const bill = Number(billInput.value);
   const people = Number(peopleNumberInput.value);
 
@@ -70,14 +82,9 @@ function checkClassList(target) {
   }
 }
 
-function nullifyValue(target) {
-  target.target.value = null;
-  tipAmount.firstChild.data = "$0.00";
-  total.firstChild.data = "$0.00";
-}
-
 function activateCustomBtn() {
   activateResetBtn();
+  customBtnActivated = true;
   tipAmount.innerHTML = "$0.00";
   total.innerHTML = "$0.00";
   for (let i = 0; i < 3; i++) {
@@ -88,9 +95,13 @@ function activateCustomBtn() {
   }
 
   customBtn.classList.add("tip-custom-active");
-  console.log(customBtn.value);
   customBtn.addEventListener("input", calculate);
-
+  customBtn.value = "%";
+  customBtn.setSelectionRange(0, 0);
+  if (peopleNumberInput.value == 0 || peopleNumberInput.value === null) {
+    peopleNumberInput.parentNode.classList.add("people-number-zero");
+    peopleNumberError.classList.remove("hidden");
+  }
   for (let i = 0; i < 3; i++) {
     tipUp.children[i].addEventListener("click", deactivateCustomBtn);
   }
@@ -102,14 +113,49 @@ function activateCustomBtn() {
 function deactivateCustomBtn() {
   customBtn.classList.remove("tip-custom-active");
   customBtn.value = "Custom";
+  customBtnActivated = false;
+  if (
+    billInput.value == 100 &&
+    peopleNumberInput.value == 1 &&
+    !customBtnActivated &&
+    tipUp.children[0].classList.contains("clicked")
+  ) {
+    deactivateResetBtn();
+  }
 }
 
 function activateResetBtn() {
-  resetBtn.classList.add("reset-active");
+  if (
+    billInput.value == 100 &&
+    tipUp.children[0].classList.contains("clicked") &&
+    peopleNumberInput.value == 1
+  ) {
+    deactivateResetBtn();
+  } else {
+    resetBtn.classList.add("reset-active");
+  }
 }
 
 function deactivateResetBtn() {
   resetBtn.classList.remove("reset-active");
+}
+
+function nullifyValue(target) {
+  target.target.value = null;
+  tipAmount.firstChild.data = "$0.00";
+  total.firstChild.data = "$0.00";
+  if (
+    target.target.classList.contains("people-number-input") ||
+    target.target.classList.contains("bill-input")
+  ) {
+    if (peopleNumberInput.value == 0 || peopleNumberInput.value === null) {
+      peopleNumberInput.parentNode.classList.add("people-number-zero");
+      peopleNumberError.classList.remove("hidden");
+    }
+  } else {
+    peopleNumberInput.parentNode.classList.remove("people-number-zero");
+    peopleNumberError.classList.add("hidden");
+  }
 }
 
 function calculateAll(data, customData, bill, people) {
@@ -118,7 +164,7 @@ function calculateAll(data, customData, bill, people) {
     tipAmount.innerHTML = `$${parseFloat(
       Math.round(amount * 100) / 100
     ).toFixed(2)}`;
-    const totalPay = ((data * bill) / 100 + bill) / people;
+    const totalPay = ((bill * data) / 100 + bill) / people;
     total.innerHTML = `$${parseFloat(Math.round(totalPay * 100) / 100).toFixed(
       2
     )}`;
@@ -127,7 +173,7 @@ function calculateAll(data, customData, bill, people) {
     tipAmount.innerHTML = `$${parseFloat(
       Math.round(amount * 100) / 100
     ).toFixed(2)}`;
-    const totalPay = ((customData * bill) / 100 + bill) / people;
+    const totalPay = ((bill * customData) / 100 + bill) / people;
     total.innerHTML = `$${parseFloat(Math.round(totalPay * 100) / 100).toFixed(
       2
     )}`;
@@ -158,4 +204,4 @@ function resetAll() {
   deactivateCustomBtn();
 }
 
-selectTips();
+init();
